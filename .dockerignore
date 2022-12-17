@@ -14,6 +14,7 @@ pids
 node_modules
 Dockerfile*
 docker-compose*
+.env
 .dockerignore
 .git
 .gitignore

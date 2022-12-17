@@ -1,16 +1,26 @@
-FROM node:16
+FROM node:16-alpine as builder
 
 # Create app directory
 WORKDIR /usr/src/app
 
 # Install app dependencies
-COPY package*.json ./
+COPY package.json yarn.lock ./
+RUN yarn install --frozen-lockfile
 
-# If you are building your code for production
-RUN npm ci --only=production
-
-#Bundle app source
 COPY . .
+
+RUN yarn build
+
+
+FROM node:16-alpine
+
+# Create app directory
+WORKDIR /usr/src/app
+
+# Install app dependencies
+COPY package.json yarn.lock ./
+RUN yarn install --production --frozen-lockfile
+COPY --from=builder /usr/src/app/build ./build
 
 ENV APP_NAME=todo-list
 ENV APP_PORT=3030
