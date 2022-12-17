@@ -2,7 +2,7 @@ import Activity from "../models/Activity";
 export const get = async (param: number | null = null): Promise<Activity[] | boolean> => {
      let activity = await Activity.findAll()
      if (param != null) {
-          let activity = await Activity.findAll({
+          activity = await Activity.findAll({
                where: { id: `${param}` }
           })
      }

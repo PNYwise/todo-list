@@ -41,6 +41,7 @@ Activity.init({
     type: DataTypes.STRING
   },
 }, {
+  tableName: "activities",
   timestamps: true,
   paranoid: true,
   sequelize: sequelizeConnection,

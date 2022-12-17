@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { get, getById, create, update, destroy } from "../services/ActivityService";
 import { responseBuilder } from "../actions/ResponseBuilder";
 
-export const getAll = async (req: Request, res: Response): Promise<Response> => {
+export const getActivities = async (req: Request, res: Response): Promise<Response> => {
      const data = await get();
      if (data) {
           return responseBuilder(res, 200, "Success", "Success", data as [])
@@ -23,7 +23,7 @@ export const createActivity = async (req: Request, res: Response): Promise<Respo
      if (email == null || email == "" || email == undefined) {
           return responseBuilder(res, 400, "Bad Request", "email cannot be null")
      }
-     if (title == null || title == "" || title == undefined) {
+     if (title == null || title == undefined || !Boolean(title)) {
           return responseBuilder(res, 400, "Bad Request", "title cannot be null")
      }
      const data = await create(req.body);

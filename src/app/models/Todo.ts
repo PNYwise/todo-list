@@ -4,13 +4,13 @@ import sequelizeConnection from "../../config/connection";
 
 interface TodoAttr {
   id?: number,
-  activity_group_id?: string,
+  activity_group_id?: number | string,
   title?: string,
-  is_active?: string,
+  is_active?: number | boolean | string,
   priority?: string,
   created_at?: Date,
   updated_at?: Date,
-  deleted_at?: Date,
+  deleted_at?: Date | null,
 }
 
 export interface TodoInput extends Optional<TodoAttr, 'id'> { };
@@ -18,9 +18,9 @@ export interface TodoOutput extends Required<TodoAttr> { };
 
 class Todo extends Model<TodoAttr, TodoInput> implements TodoAttr {
   public id!: number;
-  public activity_group_id!: string;
+  public activity_group_id!: number | string;
   public title!: string;
-  public is_active!: string;
+  public is_active!: number | boolean | string;
   public priority!: string;
 
   public readonly created_at!: Date;
@@ -37,7 +37,7 @@ Todo.init({
   },
   activity_group_id: {
     allowNull: false,
-    type: DataTypes.STRING
+    type: DataTypes.INTEGER
   },
   title: {
     allowNull: false,
@@ -45,17 +45,23 @@ Todo.init({
   },
   is_active: {
     allowNull: false,
-    type: DataTypes.STRING
+    defaultValue: true,
+    type: DataTypes.BOOLEAN
   },
   priority: {
     allowNull: false,
+    defaultValue: "very-high",
     type: DataTypes.STRING
   },
 }, {
+  tableName: "todos",
   timestamps: true,
   paranoid: true,
   sequelize: sequelizeConnection,
-  underscored: true
+  underscored: true,
+  createdAt: "created_at",
+  updatedAt: "updated_at",
+  deletedAt: "deleted_at"
 });
 
 export default Todo
