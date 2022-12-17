@@ -6,7 +6,6 @@ export const get = async (param: number | null = null): Promise<Activity[] | boo
                where: { id: `${param}` }
           })
      }
-     console.log(activity)
      if (activity.length >= 1) {
           return activity
      }

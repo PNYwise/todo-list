@@ -1,6 +1,5 @@
 import Todo from "../models/Todo";
 export const get = async (param: number): Promise<Todo[] | boolean> => {
-     console.log();
      let todo = []
      if (!Number.isNaN(param)) {
           todo = await Todo.findAll({
