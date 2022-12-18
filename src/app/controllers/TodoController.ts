@@ -8,7 +8,7 @@ export const getTodos = async (req: Request, res: Response): Promise<Response> =
      if (data) {
           return responseBuilder(res, 200, "Success", "Success", data as [])
      }
-     return responseBuilder(res, 200, "Success", "Success")
+     return responseBuilder(res, 200, "Success", "Success", data as [])
 }
 
 export const getTodo = async (req: Request, res: Response): Promise<Response> => {

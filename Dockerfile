@@ -1,4 +1,4 @@
-FROM node:14-alpine
+FROM node:current-alpine3.17
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -7,7 +7,6 @@ COPY package*.json ./
 COPY yarn.lock ./
 
 RUN yarn install --production
-RUN yarn global add pm2
 
 # Bundle app source
 COPY . .
@@ -25,4 +24,4 @@ ENV MYSQL_PASSWORD=
 
 EXPOSE ${APP_PORT}
 
-CMD pm2-runtime start ecosystem.config.js  
+CMD node build/index.js

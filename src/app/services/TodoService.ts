@@ -1,5 +1,5 @@
 import Todo from "../models/Todo";
-export const get = async (param: number): Promise<Todo[] | boolean> => {
+export const get = async (param: number): Promise<Todo[]> => {
      let todo = []
      if (!Number.isNaN(param)) {
           todo = await Todo.findAll({
@@ -19,7 +19,7 @@ export const get = async (param: number): Promise<Todo[] | boolean> => {
                return $v
           })
      }
-     return false
+     return todo
 }
 
 export const getById = async (id: number): Promise<object | null> => {
