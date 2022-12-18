@@ -65,7 +65,7 @@ Todo.init({
   deletedAt: "deleted_at",
   indexes: [
     {
-      unique: true,
+      unique: false,
       fields: ['activity_group_id']
     }
   ]
