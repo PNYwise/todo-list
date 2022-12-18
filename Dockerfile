@@ -25,4 +25,4 @@ ENV MYSQL_PASSWORD=
 
 EXPOSE ${APP_PORT}
 
-CMD pm2-runtime start ecosystem.config.js
+CMD pm2-runtime start ecosystem.config.js  
