@@ -8,7 +8,7 @@ export const get = async (param: number): Promise<Todo[] | boolean> => {
      } else {
           todo = await Todo.findAll()
      }
-     if (todo.length >= 1) {
+     if (todo.length > 0) {
           return todo.map<Todo>(($v): Todo => {
                $v.activity_group_id = $v.activity_group_id.toString()
                if ($v.is_active == true) {
