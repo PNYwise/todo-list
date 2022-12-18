@@ -16,7 +16,7 @@ const sequelizeConnection = new Sequelize(dbName, dbUsername, dbPassword, {
      port: dbPort,
      dialect: dbDialect,
      pool: {
-          max: 50,
+          max: 10,
           min: 0,
           acquire: 30000,
           idle: 10000

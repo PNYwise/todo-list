@@ -2,7 +2,6 @@ import express from "express";
 
 import { getActivities, createActivity, updateActivity, destroyActivity, getActivity } from "../app/controllers/ActivityController";
 import { getTodos, createTodo, updateTodo, destroyTodo, getTodo } from "../app/controllers/TodoController";
-
 export const router = express.Router()
 
 //activity - groups
