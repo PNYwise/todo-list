@@ -13,7 +13,13 @@ const dbDialect = "mysql"
 const sequelizeConnection = new Sequelize(dbName, dbUsername, dbPassword, {
      host: dbHost,
      port: dbPort,
-     dialect: dbDialect
+     dialect: dbDialect,
+     pool: {
+          max: 50,
+          min: 0,
+          acquire: 30000,
+          idle: 10000
+     }
 })
 export default sequelizeConnection
 

@@ -37,7 +37,8 @@ Todo.init({
   },
   activity_group_id: {
     allowNull: false,
-    type: DataTypes.INTEGER
+    type: DataTypes.INTEGER,
+
   },
   title: {
     allowNull: false,
@@ -61,7 +62,13 @@ Todo.init({
   underscored: true,
   createdAt: "created_at",
   updatedAt: "updated_at",
-  deletedAt: "deleted_at"
+  deletedAt: "deleted_at",
+  indexes: [
+    {
+      unique: true,
+      fields: ['activity_group_id']
+    }
+  ]
 });
 
 export default Todo
