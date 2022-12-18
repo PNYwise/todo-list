@@ -11,6 +11,7 @@ const dbPort = process.env.MYSQL_PORT as any
 const dbDialect = "mysql"
 
 const sequelizeConnection = new Sequelize(dbName, dbUsername, dbPassword, {
+     logging: false,
      host: dbHost,
      port: dbPort,
      dialect: dbDialect,
